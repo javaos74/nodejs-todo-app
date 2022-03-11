@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: todoapp-config
+  namespace: charles 
+data:
+  config.json: |
+    {
+        "user": "root",
+        "password": "lQz0wmzQPl"
+    }
