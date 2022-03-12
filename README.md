@@ -16,7 +16,7 @@ Install node.js server from https://nodejs.org/en/download/
 
 1. Clone this git repository, if you haven't done already.
 
-   `git clone https://github.com/cmevawala/nodejs-todo-app.git`
+   `git clone https://github.com/javaos74/nodejs-todo-app.git`
 
 2. Install local npm dependencies
 

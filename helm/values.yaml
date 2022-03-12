@@ -5,10 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: charlescr.azurecr.io/todoapp
+  #repository: charlescr.azurecr.io/todoapp
+  repository: 230547346306.dkr.ecr.ap-northeast-2.amazonaws.com/todoapp
   pullPolicy: Always 
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.10"
+  tag: "0.0.4"
 
 imagePullSecrets:
   - name: myregistrykey
@@ -38,21 +39,27 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer 
+  type: LoadBalancer
   port: 80
   targetPort: 80
 
 ingress:
   enabled: false
-  className: ""
-  annotations: {}
+  #className: "alb"
+  annotations:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/load-balancer-name: alb-charles-mnet
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    kubernetes.io/role/elb: 1
+    kubernetes.io/cluster/eks-charles: pub-sub
+    alb.ingress.kubernetes.io/target-type: ip
   hosts:
-    - host: chart-example.local
+    - host: charles.myrobots.site
       paths:
-        - path: /
-          pathType: ImplementationSpecific
+        - path: /*
+          pathType: Prefix
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

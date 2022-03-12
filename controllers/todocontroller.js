@@ -1,6 +1,9 @@
 var bodyparser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://admin:admin@ds135532.mlab.com:35532/todolist');
+const fs = require('fs');
+const conf = JSON.parse(fs.readFileSync("/etc/todo/config.json", 'utf8'));
+console.log( conf);
+mongoose.connect(`mongodb://${conf.user}:${conf.password}@todo-mongodb:27017/todolist?authSource=admin`);
 
 // Create Schema
 var todoschema = new mongoose.Schema({
@@ -65,6 +68,10 @@ app.delete('/todo/:item', function(request, response) {
   // });
   //
   // response.json(data); // ?
+});
+
+app.get('/', function(request, response) {
+   response.send("This is todo app");
 });
 
 };

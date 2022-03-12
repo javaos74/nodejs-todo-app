@@ -1,0 +1,37 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eks-charles
+  region: ap-northeast-2
+
+vpc: 
+  id: "vpc-01ed80d26a4791e39"
+  subnets:
+    public:
+      ap-northeast-2d:
+        id: "subnet-045b7c47afc7e12d6"
+      ap-northeast-2b:
+        id: "subnet-03d80e87ff4e8f252"
+      ap-northeast-2c:
+        id: "subnet-08d771bcd99259e85" 
+      ap-northeast-2a:
+        id: "subnet-0f5a5d4f5cbb07c1e"
+
+managedNodeGroups:
+  - name: "charles-template-ng"
+    launchTemplate:
+      id: "lt-0efb741115748b07a" 
+      version: "5" #optional (uses the default version of the launch template if unspecified)
+    labels: {role: worker}
+    tags:
+      nodegroup-role: worker
+    iam:
+      withAddonPolicies:
+        externalDNS: true
+        certManager: true
+        autoScaler: true
+        cloudWatch: true
+        ebs: true
+        efs: true
