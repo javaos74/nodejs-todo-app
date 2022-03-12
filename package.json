@@ -8,18 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cmevawala/nodejs-todo-app.git"
+    "url": "git+https://github.com/javaos74/nodejs-todo-app.git"
   },
   "author": "Chitrang Mevawala",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cmevawala/nodejs-todo-app/issues"
+    "url": "https://github.com/javaos74/nodejs-todo-app/issues"
   },
-  "homepage": "https://github.com/cmevawala/nodejs-todo-app#readme",
+  "homepage": "https://github.com/javaos74/nodejs-todo-app#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
-    "mongoose": "^4.10.8"
+    "mongoose": "^6.2.5"
   }
 }
